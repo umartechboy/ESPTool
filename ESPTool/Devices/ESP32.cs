@@ -203,9 +203,8 @@ namespace ESPTool.Devices
                 result = await Loader.FLASH_DEFL_END((UInt32)(execute ? 0 : 1), firmware.EntryPoint, ct);
             }
 
+            progress?.Report(0);
             return result;
-
-
         }
         
 

@@ -31,7 +31,7 @@ namespace ExampleApp
             AddButton("Open com", async () =>
             {
                 richTextBox1.AppendText("Opening com\r\n");
-                dev.OpenSerial("COM56", 115200);
+                dev.OpenSerial("COM6", 115200);
             });
 
             AddButton("Enter Bootloader", async () =>
@@ -174,4 +174,5 @@ namespace ExampleApp
         }
 
     }
+
 }

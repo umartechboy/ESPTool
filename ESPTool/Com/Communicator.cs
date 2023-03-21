@@ -10,7 +10,7 @@ namespace ESPTool.Com
     /// </summary>
     public class Communicator
     {
-        SerialPort uart = new SerialPort();
+        public SerialPort uart { get; set; } = new SerialPort();
         SlipFraming framing = new SlipFraming();
 
         public event EventHandler<Frame> FrameRecieved;
@@ -29,6 +29,8 @@ namespace ESPTool.Com
 
         public void ClearBuffer()
         {
+            if (!uart.IsOpen)
+                uart.Open();
             uart.DiscardInBuffer();
             framing.ClearBuffer();
         }

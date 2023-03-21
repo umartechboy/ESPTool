@@ -29,7 +29,9 @@ namespace ESPTool.Devices
         public async Task<Result> OpenSerial(string name, int baud)
         {
             Loader.Com.OpenSerial(name, baud);
-            return Result.OK;
+            if (Loader.Com.uart.IsOpen)
+                return Result.OK;
+            return Result.UnknownError;
         }
 
         public async Task<Result> CloseSerial()
