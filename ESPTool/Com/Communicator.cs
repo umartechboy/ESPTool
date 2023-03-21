@@ -71,7 +71,7 @@ namespace ESPTool.Com
 
 
 
-        public async Task<Result> EnterBootloader(CancellationToken ct = default(CancellationToken))
+        public Task<Result> EnterBootloader(CancellationToken ct = default)
         {
             //Reset
             uart.DtrEnable = false;
@@ -87,10 +87,10 @@ namespace ESPTool.Com
             uart.DtrEnable = false;
             uart.RtsEnable = false;
 
-            return cancelled ? Result.TaskCanceled : Result.OK;
+            return Task.FromResult(cancelled ? Result.TaskCanceled : Result.OK);
         }
 
-        public async Task<Result> Reset(CancellationToken ct = default(CancellationToken))
+        public Task<Result> Reset(CancellationToken ct = default)
         {
             //Reset
             uart.DtrEnable = false;
@@ -102,7 +102,7 @@ namespace ESPTool.Com
             uart.DtrEnable = false;
             uart.RtsEnable = false;
 
-            return cancelled ? Result.TaskCanceled : Result.OK;
+            return Task.FromResult(cancelled ? Result.TaskCanceled : Result.OK);
         }
 
         public void SendFrame(Frame frame)
